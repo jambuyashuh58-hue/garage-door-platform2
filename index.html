@@ -120,21 +120,41 @@
         }
     </style>
 </head>
-    <script>
-  const stripeLinks = {repair: "https://buy.stripe.com/your-link",install: "https://buy.stripe.com/your-link",emergency: "https://buy.stripe.com/your-link"};
-  const razorpayLinks = {repair: "https://rzp.io/i/your-link",install: "https://rzp.io/i/your-link",emergency: "https://rzp.io/i/your-link"};
-  function payNow(service){// Choose automatic payer method
-    const url = stripeLinks[service] || razorpayLinks[service];window.open(url, "_blank");}
+<body>    
+<!-- Pricing Section -->
+<section id="pricing">
+  <h2>Pricing</h2>
+  <!-- Payment Method Selector -->
   <select id="payMethod" class="input-field mb-4">
-  <option value="stripe">Pay with Card (Stripe)</option>
-  <option value="razorpay">Pay with UPI/Card (Razorpay)</option>
-</select>
+    <option value="stripe">Pay with Card (Stripe)</option>
+    <option value="razorpay">Pay with UPI/Card (Razorpay)</option>
+  </select>
+  <button onclick="payNow('repair')">Pay Now for Repair</button>
+  <button onclick="payNow('install')">Pay Now for Installation</button>
+  <button onclick="payNow('emergency')">Pay Emergency Fee</button>
+</section>
+<!-- ADD SCRIPT HERE -->
+<script>
+  const stripeLinks = {
+    repair: "https://buy.stripe.com/your-link",
+    install: "https://buy.stripe.com/your-link",
+    emergency: "https://buy.stripe.com/your-link"
+  };
+  const razorpayLinks = {
+    repair: "https://rzp.io/i/your-link",
+    install: "https://rzp.io/i/your-link",
+    emergency: "https://rzp.io/i/your-link"
+  };
   function payNow(service){
-  const method = document.getElementById("payMethod").value;
-  const url = method === "stripe" ? stripeLinks[service] : razorpayLinks[service];
-  window.open(url, "_blank");}
+    const method = document.getElementById("payMethod").value;
+    const url = method === "stripe"
+      ? stripeLinks[service]
+      : razorpayLinks[service];
+    window.open(url, "_blank");
+  }
 </script>
-<body>
+</body>
+</html>
     <!-- Language Toggle -->
     <div class="lang-toggle">
         <button onclick="switchLang('tr')" class="active" id="lang-tr">🇹🇷 TR</button>
@@ -198,41 +218,7 @@
             </div>
 
             <!-- Add Service -->
-            <!-- Pricing Section -->
-                 <section id="pricing" class="py-10 bg-gray-50">
-                   <div class="container mx-auto px-4">
-                      <h2 class="text-3xl font-bold text-center mb-8">
-                        🔧 Service Pricing
-                       </h2>
-                       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                         <!-- Repair Plan -->
-                           <div class="bg-white shadow-lg p-6 rounded-xl">
-                             <h3 class="text-xl font-semibold mb-2">Garage Door Repair</h3>
-                             <p class="text-gray-600 mb-4">₺500 – ₺2.000</p>
-                               <button onclick="payNow('repair')" class="btn-primary w-full py-2">
-                                  Book & Pay
-                                </button>
-                               </div>
-                               <!-- Installation Plan -->
-                                 <div class="bg-white shadow-lg p-6 rounded-xl">
-                                   <h3 class="text-xl font-semibold mb-2">New Door Installation</h3>
-                                   <p class="text-gray-600 mb-4">₺3.000 – ₺15.000</p>
-                                   <button onclick="payNow('install')" class="btn-primary w-full py-2">
-                                     Book & Pay
-                                   </button>
-                                </div>
-                                <!-- Emergency Plan -->
-                                <div class="bg-white shadow-lg p-6 rounded-xl">
-                                  <h3 class="text-xl font-semibold mb-2">Emergency Service (7/24)</h3>
-                                  <p class="text-gray-600 mb-4">Fixed ₺900</p>
-                                  <button onclick="payNow('emergency')" class="btn-primary w-full py-2">
-                                    Pay Now
-                                   </button>
-                                </div>
-                            </div>
-                         </div>
-</section>
-            <div class="mb-6">
+             <div class="mb-6">
                 <h3 class="font-bold text-lg mb-3" data-i18n="add_service">🛠️ Hizmet Ekle</h3>
                 <div class="space-y-2">
                     <input type="text" id="newServiceNameTr" placeholder="Hizmet Adı (TR)" class="input-field text-sm">
