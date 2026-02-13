@@ -132,6 +132,28 @@
   <button onclick="payNow('repair')">Pay Now for Repair</button>
   <button onclick="payNow('install')">Pay Now for Installation</button>
   <button onclick="payNow('emergency')">Pay Emergency Fee</button>
+    <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Thank You – Garage Door Service</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+</head>
+<body style="font-family:system-ui; padding:24px;">
+  <h1>Thank you! Your payment was successful.</h1>
+  <p id="payinfo"></p>
+  <p>Our team will contact you shortly to schedule your service.</p>
+  <a href="/" style
+
+  <script>
+    const params = new URLSearchParams(location.search);
+    const id = params.get('payid');
+    if (id) {
+      document.getElementById('payinfo').innerText = `Payment ID: ${id}`;
+    }
+  </script>
+</body>
+</html>
 </section>
 <!-- ADD SCRIPT HERE -->
 <script>
